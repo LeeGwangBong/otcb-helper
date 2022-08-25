@@ -1,6 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { port } = require("./config.json");
+//const { port } = require("./config.json");
+const PORT = process.env.PORT
+
+
+
+
 const Caver = require("caver-js");
 
 const rpcURL = "https://polygon-rpc.com/";
@@ -60,6 +65,6 @@ app.post("/api_wallet", async (request, response) => {
   });
 });
 
-app.listen(port, () =>
-  console.log(`App listening at http://localhost:${port}`)
+app.listen(PORT, () =>
+  console.log(`App listening`)
 );
