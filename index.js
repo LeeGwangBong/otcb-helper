@@ -1,9 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 //const { port } = require("./config.json");
-const PORT = process.env.PORT
-
-
+const PORT = process.env.PORT || 53134;
 
 
 const Caver = require("caver-js");
@@ -34,9 +32,11 @@ initContract();
 const app = express();
 
 app.use(bodyParser.json());
+//app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.get("/", (request, response) => {
   return response.sendFile("index.html", { root: "." });
+  //response.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
 app.post("/api_discord_connect", async (request, response) => {
